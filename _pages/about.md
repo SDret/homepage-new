@@ -14,31 +14,19 @@ author_profile: true
   <p class="p-tagline">Learning Beyond Spurious Correlations</p>
 
   <p>
-    I am <strong>Yibo Zhou (周亦博)</strong>, a Ph.D. graduate in
+    I am <strong>Yibo Zhou (周亦博)</strong>, Ph.D. in
     Artificial Intelligence from
     <a class="p-academic-link"
        href="https://www.buaa.edu.cn/"
        target="_blank" rel="noopener noreferrer">Beihang University</a>
-    (June 2026).
-  </p>
-
-  <p class="p-advisor">
-    My doctoral advisor was
+    (June 2026). My doctoral advisor was
     <a class="p-academic-link"
        href="https://teacher.buaa.edu.cn/huhaimiao/en/index/28756/list/index.htm"
-       target="_blank" rel="noopener noreferrer">Prof. Hai-Miao Hu</a>.
-  </p>
-
-  <p>
-    My research connects <strong>identifiability and computational limits</strong>,
+       target="_blank" rel="noopener noreferrer">Prof. Hai-Miao Hu</a>. My research connects <strong>identifiability and computational limits</strong>,
     <strong>shortcut-resistant evaluation</strong>, and
     <strong>balanced representation learning</strong>.
     I study when models can recover task-relevant structure rather than
-    rely on misleading statistical regularities.
-  </p>
-
-  <p>
-    Across these directions, I examine
+    rely on misleading statistical regularities. Across these directions, I examine
     <strong>what data can identify</strong>,
     <strong>what algorithms can recover</strong>, and
     <strong>what evaluations can verify</strong>,
