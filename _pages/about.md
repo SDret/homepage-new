@@ -11,70 +11,119 @@ author_profile: true
 <section id="about-me">
   <h1>About Me</h1>
 
-  <p class="p-tagline">
-    Learning Beyond Spurious Correlations
-  </p>
+  <p class="p-tagline">Learning Beyond Spurious Correlations</p>
 
   <p>
-    I am <strong>Yibo Zhou (周亦博)</strong>.
-    I received my Ph.D. in Artificial Intelligence from
-    <strong>Beihang University</strong> in June 2026.
+    I am <strong>Yibo Zhou (周亦博)</strong>, a Ph.D. graduate in
+    Artificial Intelligence from
+    <a class="p-academic-link"
+       href="https://www.buaa.edu.cn/"
+       target="_blank" rel="noopener noreferrer">Beihang University</a>
+    (June 2026).
   </p>
 
   <p class="p-advisor">
-    During my Ph.D., I was advised by
-    <strong>Prof. Hai-Miao Hu</strong>.
+    My doctoral advisor was
+    <a class="p-academic-link"
+       href="https://teacher.buaa.edu.cn/huhaimiao/en/index/28756/list/index.htm"
+       target="_blank" rel="noopener noreferrer">Prof. Hai-Miao Hu</a>.
   </p>
 
   <p>
-    My research asks when learning systems can distinguish
-    task-relevant structure from misleading statistical regularities.
-    I connect <strong>identifiability and computational limits</strong>,
+    My research connects <strong>identifiability and computational limits</strong>,
     <strong>shortcut-resistant evaluation</strong>, and
     <strong>balanced representation learning</strong>.
+    I study when models can recover task-relevant structure rather than
+    rely on misleading statistical regularities.
   </p>
 
   <p>
-    Across these directions, I study
+    Across these directions, I examine
     <strong>what data can identify</strong>,
     <strong>what algorithms can recover</strong>, and
     <strong>what evaluations can verify</strong>,
-    with applications to out-of-distribution detection and
-    pedestrian attribute recognition.
+    with applications to trustworthy computer vision,
+    out-of-distribution detection, and pedestrian attribute recognition.
+  </p>
+
+  <p class="p-links">
+    <a href="mailto:ybzhou@buaa.edu.cn">Email</a>
+    <a href="https://scholar.google.com/citations?user=Ch18_eIAAAAJ"
+       target="_blank" rel="noopener noreferrer">Google Scholar</a>
+    <a href="https://orcid.org/0000-0001-7964-7517"
+       target="_blank" rel="noopener noreferrer">ORCID</a>
+    <a href="https://github.com/SDret"
+       target="_blank" rel="noopener noreferrer">GitHub</a>
   </p>
 </section>
 
-<section id="arxiv-updates">
-  <h1>arXiv Papers · Auto-updated</h1>
+<section id="news">
+  <h1>News</h1>
 
-  <p>
-    This list is automatically loaded from my arXiv author profile.
-    <a
-      href="https://arxiv.org/a/0000-0001-7964-7517"
-      target="_blank"
-      rel="noopener">
-      View all papers on arXiv
-    </a>
-  </p>
-
-  <div id="arxivfeed">
-    Loading the arXiv publication list...
+  {% assign honors = site.data.news | where: "kind", "honor" %}
+  <div class="n-awards">
+    {% for item in honors %}
+    <article class="n-award">
+      <div class="n-award-top">
+        <span class="n-star" aria-hidden="true">★</span>
+        <span class="n-date">{{ item.date }}</span>
+      </div>
+      <h3>{{ item.title }}</h3>
+      <p>{{ item.text }}</p>
+    </article>
+    {% endfor %}
   </div>
+
+  {% assign updates = site.data.news | where: "kind", "paper" %}
+  <ul class="n-timeline" role="list">
+    {% for item in updates limit:3 %}
+    <li>
+      <span class="n-date">{{ item.date }}</span>
+      <div>
+        <span class="n-tag">{{ item.tag }}</span>
+        <p><strong>{{ item.title }}</strong> — {{ item.text }}</p>
+        <div class="n-links">
+          {% if item.url %}
+          <a href="{{ item.url | escape }}"
+             target="_blank" rel="noopener noreferrer">Paper ↗</a>
+          {% endif %}
+          {% if item.code %}
+          <a href="{{ item.code | escape }}"
+             target="_blank" rel="noopener noreferrer">Code ↗</a>
+          {% endif %}
+        </div>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% if updates.size > 3 %}
+  <details class="n-history">
+    <summary>Earlier publication updates</summary>
+    <ul class="n-timeline" role="list">
+      {% for item in updates offset:3 %}
+      <li>
+        <span class="n-date">{{ item.date }}</span>
+        <div>
+          <span class="n-tag">{{ item.tag }}</span>
+          <p><strong>{{ item.title }}</strong> — {{ item.text }}</p>
+          <div class="n-links">
+            {% if item.url %}
+            <a href="{{ item.url | escape }}"
+               target="_blank" rel="noopener noreferrer">Paper ↗</a>
+            {% endif %}
+            {% if item.code %}
+            <a href="{{ item.code | escape }}"
+               target="_blank" rel="noopener noreferrer">Code ↗</a>
+            {% endif %}
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </details>
+  {% endif %}
 </section>
-
-<script>
-  var arxiv_authorid = "0000-0001-7964-7517";
-  var arxiv_format = "arxiv";
-  var arxiv_max_entries = 10;
-  var arxiv_includeTitle = 0;
-  var arxiv_includeSummary = 0;
-  var arxiv_includeComments = 0;
-  var arxiv_includeSubjects = 0;
-  var arxiv_includeJournalRef = 1;
-  var arxiv_includeDOI = 1;
-</script>
-
-<script src="https://arxiv.org/js/myarticles.js"></script>
 
 <section id="publications">
   <h1>Selected Publications</h1>
@@ -85,11 +134,9 @@ author_profile: true
   </p>
 
   <div id="p-filters" class="p-filters" hidden>
-    <input
-      id="p-search"
-      type="search"
-      placeholder="Search papers..."
-      aria-label="Search papers">
+    <input id="p-search" type="search"
+           placeholder="Search papers..."
+           aria-label="Search papers">
 
     <select id="p-topic" aria-label="Filter by research direction">
       <option value="">All topics</option>
@@ -109,74 +156,62 @@ author_profile: true
     <span id="p-count" class="p-muted" aria-live="polite"></span>
   </div>
 
-  {% for paper in site.data.papers %}
-  <article
-    class="paper-box p-card"
-    data-year="{{ paper.year }}"
-    data-topic="{{ paper.topic }}">
+  {% assign ordered_papers = site.data.papers | sort: "display_order", "last" %}
+  {% for paper in ordered_papers %}
+  <article class="paper-box p-card"
+           data-year="{{ paper.year }}"
+           data-topic="{{ paper.topic }}"
+           data-role="{{ paper.role }}"
+           data-title="{{ paper.title | escape }}">
 
     <div class="paper-box-image">
       <div>
         <div class="badge">{{ paper.venue }}</div>
-
-        <button
-          type="button"
-          class="p-zoom"
-          aria-label="Enlarge figure: {{ paper.title | escape }}">
-
-          <img
-            src="{{ '/images/' | append: paper.image | relative_url }}"
-            alt="{{ paper.title | escape }}"
-            loading="lazy">
+        <button type="button" class="p-zoom"
+                aria-label="Enlarge figure: {{ paper.title | escape }}">
+          <img src="{{ '/images/' | append: paper.image | relative_url }}"
+               alt="{{ paper.title | escape }}"
+               loading="lazy">
         </button>
       </div>
     </div>
 
     <div class="paper-box-text">
       <h3>
-        <a
-          href="{{ paper.url | escape }}"
-          target="_blank"
-          rel="noopener">{{ paper.title }}</a>
+        <a href="{{ paper.url | escape }}"
+           target="_blank" rel="noopener noreferrer">{{ paper.title }}</a>
       </h3>
 
       <p>
         <strong>Yibo Zhou</strong>
-
         <span class="p-role">
           {% if paper.sole %}
             Sole author
           {% elsif paper.role == "corresponding" %}
             Corresponding author
-          {% else %}
+          {% elsif paper.role == "first" %}
             First author
+          {% else %}
+            Author
           {% endif %}
         </span>
       </p>
 
       <p class="p-muted">
         {{ paper.venue }} · {{ paper.status }}
-
         {% if paper.honor %}
         <span class="p-honor">{{ paper.honor }}</span>
         {% endif %}
       </p>
 
-      <p class="p-takeaway">
-        {{ paper.takeaway }}
-      </p>
+      <p class="p-takeaway">{{ paper.takeaway }}</p>
 
       <p class="p-links">
-        <a
-          href="{{ paper.url | escape }}"
-          target="_blank"
-          rel="noopener">Paper</a>
-
+        <a href="{{ paper.url | escape }}"
+           target="_blank" rel="noopener noreferrer">Paper ↗</a>
         {% if paper.code %}
-        <a
-          href="{{ paper.code | escape }}"
-          target="_blank"
-          rel="noopener">Code</a>
+        <a href="{{ paper.code | escape }}"
+           target="_blank" rel="noopener noreferrer">Code ↗</a>
         {% endif %}
       </p>
 
@@ -191,44 +226,48 @@ author_profile: true
 
 <section id="patent">
   <h1>Patent Application</h1>
-
   <p>
-    <a
-      href="https://patents.google.com/patent/CN117115851A/en"
-      target="_blank"
-      rel="noopener"><strong>CN 117115851 A</strong></a>
-    — A Pedestrian Attribute Recognition Method for Complex
-    Surveillance Scenarios.
+    <a href="https://patents.google.com/patent/CN117115851A/en"
+       target="_blank" rel="noopener noreferrer"><strong>CN 117115851 A</strong></a>
+    — A Pedestrian Attribute Recognition Method for Complex Surveillance Scenarios.
   </p>
 </section>
 
 <section id="education">
   <h1>Education</h1>
 
-  <ul>
-    <li>
-      <strong>Beihang University</strong><br>
-      Ph.D. in Artificial Intelligence<br>
-      September 2022 – June 2026
-    </li>
+  <div class="p-education">
+    <div>
+      <strong>
+        <a class="p-academic-link" href="https://www.buaa.edu.cn/"
+           target="_blank" rel="noopener noreferrer">Beihang University</a>
+      </strong>
+      <p>Ph.D. in Artificial Intelligence</p>
+      <p class="p-muted">September 2022 – June 2026</p>
+    </div>
 
-    <li>
-      <strong>University of California San Diego</strong><br>
-      M.S. in Electrical Engineering<br>
-      August 2017 – May 2019
-    </li>
+    <div>
+      <strong>
+        <a class="p-academic-link" href="https://www.ucsd.edu/"
+           target="_blank" rel="noopener noreferrer">University of California San Diego</a>
+      </strong>
+      <p>M.S. in Electrical Engineering</p>
+      <p class="p-muted">August 2017 – May 2019</p>
+    </div>
 
-    <li>
-      <strong>Lanzhou University</strong><br>
-      B.S. in Materials Physics<br>
-      August 2013 – June 2017
-    </li>
-  </ul>
+    <div>
+      <strong>
+        <a class="p-academic-link" href="https://www.lzu.edu.cn/"
+           target="_blank" rel="noopener noreferrer">Lanzhou University</a>
+      </strong>
+      <p>B.S. in Materials Physics</p>
+      <p class="p-muted">August 2013 – June 2017</p>
+    </div>
+  </div>
 </section>
 
 <section id="experience">
   <h1>Professional Experience</h1>
-
   <p>
     <strong>OPPO Guangdong Mobile Telecommunications Corp., Ltd.</strong><br>
     Artificial Intelligence Algorithm Engineer<br>
@@ -237,6 +276,35 @@ author_profile: true
   </p>
 </section>
 
+<section id="publication-list">
+  <h1>publication list</h1>
+
+  <p class="p-muted">
+    Automatically synchronized from my arXiv author profile.
+    Journal-only publications may not appear in this list.
+    <a href="https://arxiv.org/a/0000-0001-7964-7517"
+       target="_blank" rel="noopener noreferrer">View on arXiv ↗</a>
+  </p>
+
+  <div id="arxivfeed">
+    Loading publications from arXiv…
+  </div>
+</section>
+
 </div>
 
+<script>
+  var arxiv_authorid = "0000-0001-7964-7517";
+  var arxiv_format = "arxiv";
+  var arxiv_max_entries = 0;
+  var arxiv_includeTitle = 0;
+  var arxiv_includeSummary = 0;
+  var arxiv_includeComments = 0;
+  var arxiv_includeSubjects = 0;
+  var arxiv_includeJournalRef = 1;
+  var arxiv_includeDOI = 1;
+</script>
+<script src="https://arxiv.org/js/myarticles.js"></script>
+
 {% include portfolio-tools.html %}
+{% include portfolio-polish.html %}
