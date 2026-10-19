@@ -27,9 +27,9 @@ jobs:
           python-version: "3.11"
 
       - name: Install Scholar reader
-              run: |
-                python -m pip install "scholarly==1.7.11" "bibtexparser==1.4.1"
-                python -c "from bibtexparser.bibdatabase import BibDatabase; print('BibTeX dependency OK')"
+        run: |
+          python -m pip install "scholarly==1.7.11" "bibtexparser==1.4.1"
+          python -c "from bibtexparser.bibdatabase import BibDatabase; print('BibTeX dependency OK')"
 
       - name: Read public Scholar profile
         env:
@@ -43,17 +43,25 @@ jobs:
 
           scholar_id = os.environ["GOOGLE_SCHOLAR_ID"]
           author = scholarly.search_author_id(scholar_id)
-          author = scholarly.fill(author, sections=["indices", "publications"])
+          author = scholarly.fill(
+              author,
+              sections=["indices", "publications"]
+          )
 
           if "citedby" not in author or not author.get("publications"):
-              raise RuntimeError("Incomplete Scholar response; keep the previous cache.")
+              raise RuntimeError(
+                  "Incomplete Scholar response; keep the previous cache."
+              )
 
           publications = []
+
           for paper in author["publications"]:
               title = paper.get("bib", {}).get("title")
               citations = paper.get("num_citations")
+
               if not title or citations is None:
                   continue
+
               publications.append({
                   "id": paper.get("author_pub_id") or title,
                   "title": title,
@@ -61,7 +69,9 @@ jobs:
               })
 
           if not publications:
-              raise RuntimeError("No valid publications; keep the previous cache.")
+              raise RuntimeError(
+                  "No valid publications; keep the previous cache."
+              )
 
           def optional_int(value):
               return int(value) if value is not None else None
@@ -96,8 +106,10 @@ jobs:
 
           cp /tmp/citation-data.json citation-data.json
           git add citation-data.json
+
           if git diff --cached --quiet; then
             exit 0
           fi
+
           git commit -m "Update Google Scholar citation cache"
           git push origin HEAD:citation-data
