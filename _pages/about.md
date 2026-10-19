@@ -44,6 +44,38 @@ author_profile: true
   </p>
 </section>
 
+<section id="arxiv-updates">
+  <h1>arXiv Papers · Auto-updated</h1>
+
+  <p>
+    This list is automatically loaded from my arXiv author profile.
+    <a
+      href="https://arxiv.org/a/0000-0001-7964-7517"
+      target="_blank"
+      rel="noopener">
+      View all papers on arXiv
+    </a>
+  </p>
+
+  <div id="arxivfeed">
+    Loading the arXiv publication list...
+  </div>
+</section>
+
+<script>
+  var arxiv_authorid = "0000-0001-7964-7517";
+  var arxiv_format = "arxiv";
+  var arxiv_max_entries = 10;
+  var arxiv_includeTitle = 0;
+  var arxiv_includeSummary = 0;
+  var arxiv_includeComments = 0;
+  var arxiv_includeSubjects = 0;
+  var arxiv_includeJournalRef = 1;
+  var arxiv_includeDOI = 1;
+</script>
+
+<script src="https://arxiv.org/js/myarticles.js"></script>
+
 <section id="publications">
   <h1>Selected Publications</h1>
 
