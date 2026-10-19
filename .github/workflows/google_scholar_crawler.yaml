@@ -27,7 +27,9 @@ jobs:
           python-version: "3.11"
 
       - name: Install Scholar reader
-        run: python -m pip install "scholarly==1.7.11"
+              run: |
+                python -m pip install "scholarly==1.7.11" "bibtexparser==1.4.1"
+                python -c "from bibtexparser.bibdatabase import BibDatabase; print('BibTeX dependency OK')"
 
       - name: Read public Scholar profile
         env:
