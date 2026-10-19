@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 480" role="img" aria-labelledby="title desc">
+  <title id="title">Counterfactual pairing cycles</title>
+  <desc id="desc">Two images and two captions form a balanced pairing cycle. Additive image and caption scores cancel exactly.</desc>
+  <rect width="1000" height="480" fill="white"/>
+  <style>
+    text{font-family:Arial,sans-serif;fill:#26242a}
+    .label{font-size:20px;font-weight:bold}
+    .small{font-size:17px}
+    .score{font-size:25px}
+    .red{fill:#9e1b32}
+    .box{fill:#f8f6f6;stroke:#e5dcdd;stroke-width:2}
+    .valid{fill:#fbf3f4;stroke:#9e1b32;stroke-width:2}
+  </style>
+  <text x="500" y="35" text-anchor="middle" class="label">Keep the parts fixed. Change only the pairing.</text>
+  <text x="475" y="80" text-anchor="middle" class="small">C₁: circle left of square</text>
+  <text x="805" y="80" text-anchor="middle" class="small">C₂: square left of circle</text>
+  <rect x="20" y="105" width="260" height="105" rx="10" class="box"/>
+  <text x="150" y="132" text-anchor="middle" class="small">Image I₁</text>
+  <circle cx="95" cy="172" r="18" fill="#dce0e7" stroke="#747784" stroke-width="2"/>
+  <rect x="185" y="154" width="36" height="36" fill="#dce0e7" stroke="#747784" stroke-width="2"/>
+  <rect x="20" y="235" width="260" height="105" rx="10" class="box"/>
+  <text x="150" y="262" text-anchor="middle" class="small">Image I₂</text>
+  <rect x="77" y="284" width="36" height="36" fill="#dce0e7" stroke="#747784" stroke-width="2"/>
+  <circle cx="203" cy="302" r="18" fill="#dce0e7" stroke="#747784" stroke-width="2"/>
+  <rect x="310" y="105" width="310" height="105" rx="10" class="valid"/>
+  <rect x="650" y="105" width="330" height="105" rx="10" class="box"/>
+  <rect x="310" y="235" width="310" height="105" rx="10" class="box"/>
+  <rect x="650" y="235" width="330" height="105" rx="10" class="valid"/>
+  <text x="465" y="150" text-anchor="middle" class="score red">+ s(I₁, C₁)</text>
+  <text x="465" y="184" text-anchor="middle" class="small red">Original / valid</text>
+  <text x="815" y="150" text-anchor="middle" class="score">− s(I₁, C₂)</text>
+  <text x="815" y="184" text-anchor="middle" class="small">Swapped / verified invalid</text>
+  <text x="465" y="280" text-anchor="middle" class="score">− s(I₂, C₁)</text>
+  <text x="465" y="314" text-anchor="middle" class="small">Swapped / verified invalid</text>
+  <text x="815" y="280" text-anchor="middle" class="score red">+ s(I₂, C₂)</text>
+  <text x="815" y="314" text-anchor="middle" class="small red">Original / valid</text>
+  <text x="500" y="385" text-anchor="middle" class="score">Δ = s(I₁,C₁) + s(I₂,C₂) − s(I₁,C₂) − s(I₂,C₁)</text>
+  <rect x="20" y="408" width="960" height="52" rx="10" fill="#fbf3f4"/>
+  <text x="500" y="441" text-anchor="middle" class="label red">s(I,C) = a(I) + b(C)  ⇒  Δ = 0 exactly</text>
+</svg>
