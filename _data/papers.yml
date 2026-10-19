@@ -4,7 +4,7 @@
   status: "Accepted"
   role: "first"
   topic: "evaluation"
-  image: "fig04-counterfactual.svg"
+  image: "fig04-counterfactual.png"
   url: "https://openreview.net/forum?id=nLCr7f3CZV"
   takeaway: "Keep the components fixed to isolate evidence about their pairing."
   summary: "Counterfactual pairing cycles reuse the same two images and two captions while changing only their assignment. The balanced contrast cancels image-only, text-only, and additive component shortcuts exactly, providing an evaluation primitive, a training loss, and a diagnostic for relational OOD."
