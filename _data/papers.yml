@@ -1,15 +1,18 @@
 - title: "Can the Parts Fool the Test? Counterfactual Pairing Cycles for Relational OOD"
+  display_order: 70
   year: 2026
   venue: "NeurIPS 2026"
   status: "Accepted"
   role: "first"
   topic: "evaluation"
   image: "fig04-counterfactual.png"
-  url: "https://openreview.net/forum?id=nLCr7f3CZV"
+  url: "https://arxiv.org/abs/2610.23248"
+  code: "https://github.com/SDret/Official-Implementation-of-Neurips-2026-paper-Can-the-Parts-Fool-the-Test-"
   takeaway: "Keep the components fixed to isolate evidence about their pairing."
   summary: "Counterfactual pairing cycles reuse the same two images and two captions while changing only their assignment. The balanced contrast cancels image-only, text-only, and additive component shortcuts exactly, providing an evaluation primitive, a training loss, and a diagnostic for relational OOD."
 
 - title: "Can Metadata Fix the Gauge? Calibration Turns Sparse Multi-Source Learning from Sparse PCA into Sparse Mean Recovery"
+  display_order: 90
   year: 2026
   venue: "NeurIPS 2026"
   status: "Accepted"
@@ -21,6 +24,7 @@
   summary: "Source labels do not reveal how different sources orient their coordinates. In a sparse Gaussian model, relative-gauge metadata enables synchronization and changes the learning problem from sparse PCA to sparse mean recovery. Aligned mass quantifies the statistical value of calibration, with computational consequences under sparse-PCA hardness assumptions."
 
 - title: "What Can Labels Alone Audit and Edit in Frozen Representations?"
+  display_order: 80
   year: 2026
   venue: "NeurIPS 2026"
   status: "Accepted"
@@ -32,6 +36,7 @@
   summary: "Labels identify a posterior quotient, rather than an arbitrary semantic/background decomposition. This motivates quotient-first auditing and editing of frozen representations. A structured second-order specialization yields dual-moment decomposition; residual editing is useful only in regimes with sufficient residual signal, support, and split stability."
 
 - title: "Is Spurious Correlation Removal Always Learnable?"
+  display_order: 60
   year: 2026
   venue: "ICML 2026"
   status: "Accepted"
@@ -43,6 +48,7 @@
   summary: "This work separates statistical identification from computational recovery in invariant learning through a conditional computational barrier. It also quantifies how environment diversity controls identifiability, estimation difficulty, and phase transitions, connecting theoretical limits with empirical diversity diagnostics."
 
 - title: "Heterogeneous Feature Re-sampling for Balanced Pedestrian Attribute Recognition"
+  display_order: 10
   year: 2025
   venue: "IEEE TPAMI 2025"
   status: "Published"
@@ -55,6 +61,7 @@
   summary: "Feature re-sampled detached learning balances each attribute without distorting the label priors of co-occurring attributes. Gradient-oriented augment translating further addresses feature noise and semantic imbalance, combining independent balancing and augmentation with minimal computational overhead."
 
 - title: "A Solution to Co-occurrence Bias in Pedestrian Attribute Recognition: Theory, Algorithms, and Improvements"
+  display_order: 20
   year: 2025
   venue: "IJCV 2025"
   status: "Published"
@@ -67,6 +74,7 @@
   summary: "Attribute-disentangled feature learning minimizes information shared across attribute-specific representations. This journal study extends the co-occurrence-bias framework with improved feature-space exploration, treatment of imbalance, and flexibility to preserve selected causal dependencies."
 
 - title: "Pedestrian Attribute Recognition as Label-balanced Multi-label Learning"
+  display_order: 40
   year: 2024
   venue: "ICML 2024"
   status: "Published"
@@ -79,6 +87,7 @@
   summary: "Feature-level re-sampling makes independent label balancing feasible despite image-level attribute co-occurrence. Bayesian feature augmentation adds in-distribution diversity for under-represented attributes, addressing label imbalance and semantic imbalance together."
 
 - title: "A Solution to Co-occurrence Bias: Attributes Disentanglement via Mutual Information Minimization for Pedestrian Attribute Recognition"
+  display_order: 50
   year: 2023
   venue: "IJCAI 2023"
   status: "Published"
@@ -91,7 +100,8 @@
   takeaway: "Recognize each attribute from its own visual evidence."
   summary: "Mutual-information minimization discourages attribute representations from encoding other attributes. Efficient feature transformation and recombination reduce reliance on dataset-specific co-occurrences and improve robustness under identity and scene shifts."
 
-- title: "Rethinking Reconstruction Autoencoder-Based Out-of-Distribution Detection"
+- title: "Rethinking Reconstruction display_order: 60-Based Out-of-Distribution Detection"
+  display_order: 30
   year: 2022
   venue: "CVPR 2022"
   status: "Published"
