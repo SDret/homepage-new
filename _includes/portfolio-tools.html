@@ -1,53 +1,220 @@
 <style>
-#portfolio{--p-red:#9e1b32;--p-tint:#fbf3f4;--p-line:#e5dcdd}
-#portfolio section{scroll-margin-top:85px;margin-bottom:2.5rem}
+#portfolio{
+  --p-red:#9e1b32;
+  --p-tint:#fbf3f4;
+  --p-line:#e5dcdd;
+}
+#portfolio section{
+  scroll-margin-top:85px;
+  margin-bottom:2.5rem;
+}
 #portfolio a{color:var(--p-red)}
-#portfolio .p-muted{font-size:.85em;color:#68636a}
-#portfolio .p-news{border-left:3px solid var(--p-red);padding:.8rem 1rem;background:var(--p-tint)}
-#portfolio .p-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0}
-#portfolio .p-stats>div{background:var(--p-tint);border:1px solid var(--p-line);border-radius:12px;padding:16px 10px;text-align:center}
-#portfolio .p-stats strong{display:block;color:var(--p-red);font-size:1.8em;line-height:1.3}
-#portfolio .p-stats span{display:block;font-size:.75em;margin-top:8px}
-#portfolio .p-areas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
-#portfolio .p-areas>div{border:1px solid var(--p-line);border-radius:12px;padding:15px}
-#portfolio .p-areas h3{color:var(--p-red);font-size:1em;margin-top:0}
-#portfolio .p-areas p{font-size:.85em;margin-bottom:0}
-#portfolio .p-filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:20px 0}
-#portfolio .p-filters input,#portfolio .p-filters select{max-width:100%;padding:9px;border:1px solid var(--p-line);border-radius:8px;font:inherit;font-size:.85em;background:white;color:#26242a}
-#portfolio .p-filters input{flex:1;min-width:140px}
+#portfolio .p-muted{
+  font-size:.85em;
+  color:#68636a;
+}
+#portfolio .p-tagline{
+  color:var(--p-red);
+  font-weight:700;
+  font-size:1.12em;
+  border-left:3px solid var(--p-red);
+  padding:10px 15px;
+  background:var(--p-tint);
+  border-radius:0 8px 8px 0;
+}
+#portfolio .p-advisor{
+  color:#555;
+}
+#portfolio .p-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin:20px 0;
+}
+#portfolio .p-filters input,
+#portfolio .p-filters select{
+  max-width:100%;
+  padding:9px;
+  border:1px solid var(--p-line);
+  border-radius:8px;
+  font:inherit;
+  font-size:.85em;
+  background:white;
+  color:#26242a;
+}
+#portfolio .p-filters input{
+  flex:1;
+  min-width:140px;
+}
 #portfolio [hidden]{display:none!important}
-#portfolio .p-card{display:flex;flex-wrap:nowrap;gap:22px;align-items:flex-start;padding:24px 0;border-bottom:1px solid var(--p-line)}
-#portfolio .p-card .paper-box-image{flex:0 0 38%;width:38%;max-width:none;min-width:0;padding:0;order:0}
-#portfolio .p-card .paper-box-text{flex:1;width:auto;max-width:none;min-width:0;padding:0}
-#portfolio .p-card h3{font-size:1.05em;margin:0 0 10px}
-#portfolio .p-card p{margin:8px 0;font-size:.9em}
-#portfolio .p-card .badge{position:static;display:inline-block;margin-bottom:10px;padding:4px 9px;background:var(--p-red);color:white;border-radius:5px;font-size:.78em}
-#portfolio .p-zoom{display:block;width:100%;padding:0;border:0;background:transparent;cursor:zoom-in}
-#portfolio .p-card .paper-box-image img{display:block;width:100%;height:auto;border-radius:8px}
-#portfolio .p-links{display:flex;flex-wrap:wrap;gap:9px;align-items:center}
-#portfolio .p-links a,#portfolio .p-cite{display:inline-block;padding:4px 9px;border:1px solid var(--p-line);border-radius:6px;font-size:.85em;text-decoration:none}
-#portfolio .p-links a:hover{background:var(--p-tint)}
-#portfolio .p-honor{display:inline-block;color:var(--p-red);font-weight:bold;margin-left:8px}
-#portfolio details{font-size:.9em}
-#portfolio summary{cursor:pointer;color:var(--p-red)}
-#portfolio .p-demo{padding:20px;border:1px solid var(--p-line);border-radius:12px}
-#portfolio .p-demo label{display:block;margin:12px 0}
-#portfolio .p-demo input{display:block;width:100%;accent-color:var(--p-red)}
-#portfolio .p-demo table{width:100%;margin:20px 0}
-#portfolio .p-demo td,#portfolio .p-demo th{text-align:center;padding:10px;border:1px solid var(--p-line)}
-#portfolio .p-valid{background:var(--p-tint);color:var(--p-red);font-weight:bold}
-#p-lightbox{max-width:95vw;max-height:95vh;padding:16px;border:0;border-radius:12px;background:white;color:#26242a}
-#p-lightbox::backdrop{background:rgba(0,0,0,.78)}
-#p-lightbox img{display:block;max-width:88vw;max-height:75vh;margin:12px auto;object-fit:contain}
-#p-lightbox p{max-width:85vw;font-size:14px}
+#portfolio .p-card{
+  display:flex;
+  flex-wrap:nowrap;
+  gap:24px;
+  align-items:flex-start;
+  padding:26px 0;
+  border-bottom:1px solid var(--p-line);
+}
+#portfolio .p-card .paper-box-image{
+  flex:0 0 38%;
+  width:38%;
+  max-width:none;
+  min-width:0;
+  padding:0;
+  order:0;
+}
+#portfolio .p-card .paper-box-text{
+  flex:1;
+  width:auto;
+  max-width:none;
+  min-width:0;
+  padding:0;
+}
+#portfolio .p-card h3{
+  font-size:1.06em;
+  line-height:1.45;
+  margin:0 0 10px;
+}
+#portfolio .p-card h3 a{
+  text-decoration:none;
+}
+#portfolio .p-card h3 a:hover{
+  text-decoration:underline;
+}
+#portfolio .p-card p{
+  margin:9px 0;
+  font-size:.9em;
+}
+#portfolio .p-card .badge{
+  position:static;
+  display:inline-block;
+  margin-bottom:10px;
+  padding:4px 9px;
+  background:var(--p-red);
+  color:white;
+  border-radius:5px;
+  font-size:.78em;
+}
+#portfolio .p-zoom{
+  display:block;
+  width:100%;
+  padding:0;
+  border:0;
+  background:transparent;
+  cursor:zoom-in;
+}
+#portfolio .p-card .paper-box-image img{
+  display:block;
+  width:100%;
+  height:auto;
+  border:1px solid #eee;
+  border-radius:9px;
+}
+#portfolio .p-role{
+  display:inline-block;
+  margin-left:5px;
+  padding:2px 7px;
+  border-radius:5px;
+  background:var(--p-tint);
+  color:var(--p-red);
+  font-size:.83em;
+  font-weight:600;
+}
+#portfolio .p-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  align-items:center;
+}
+#portfolio .p-links a{
+  display:inline-block;
+  padding:4px 10px;
+  border:1px solid var(--p-line);
+  border-radius:6px;
+  font-size:.85em;
+  text-decoration:none;
+}
+#portfolio .p-links a:hover{
+  background:var(--p-tint);
+}
+#portfolio .p-honor{
+  display:inline-block;
+  color:var(--p-red);
+  font-weight:bold;
+  margin-left:8px;
+}
+#portfolio .p-takeaway{
+  color:#444;
+}
+#portfolio details{
+  margin-top:10px;
+  font-size:.9em;
+}
+#portfolio summary{
+  cursor:pointer;
+  color:var(--p-red);
+}
+#portfolio details[open]{
+  padding:10px 12px;
+  background:#fafafa;
+  border-radius:8px;
+}
+#p-lightbox{
+  max-width:95vw;
+  max-height:95vh;
+  padding:16px;
+  border:0;
+  border-radius:12px;
+  background:white;
+  color:#26242a;
+}
+#p-lightbox::backdrop{
+  background:rgba(0,0,0,.78);
+}
+#p-lightbox img{
+  display:block;
+  max-width:88vw;
+  max-height:75vh;
+  margin:12px auto;
+  object-fit:contain;
+}
+#p-lightbox p{
+  max-width:85vw;
+  font-size:14px;
+}
 #p-close{cursor:pointer}
-#p-progress{position:fixed;top:0;left:0;height:3px;width:0;background:#9e1b32;z-index:10000;pointer-events:none}
-#p-top{position:fixed;right:20px;bottom:22px;padding:10px 14px;border:0;border-radius:30px;background:#9e1b32;color:white;cursor:pointer;z-index:1000}
+#p-progress{
+  position:fixed;
+  top:0;
+  left:0;
+  height:3px;
+  width:0;
+  background:#9e1b32;
+  z-index:10000;
+  pointer-events:none;
+}
+#p-top{
+  position:fixed;
+  right:20px;
+  bottom:22px;
+  padding:10px 14px;
+  border:0;
+  border-radius:30px;
+  background:#9e1b32;
+  color:white;
+  cursor:pointer;
+  z-index:1000;
+}
 @media(max-width:700px){
-  #portfolio .p-stats{grid-template-columns:repeat(2,minmax(0,1fr))}
-  #portfolio .p-areas{grid-template-columns:1fr}
-  #portfolio .p-card{flex-direction:column}
-  #portfolio .p-card .paper-box-image{width:100%;flex-basis:auto}
+  #portfolio .p-card{
+    flex-direction:column;
+    gap:16px;
+  }
+  #portfolio .p-card .paper-box-image{
+    width:100%;
+    flex-basis:auto;
+  }
 }
 </style>
 
@@ -56,12 +223,19 @@
   <img id="p-full" alt="">
   <p id="p-caption"></p>
 </dialog>
+
 <div id="p-progress" aria-hidden="true"></div>
-<button id="p-top" type="button" aria-label="Back to top" hidden>↑ Top</button>
+
+<button id="p-top" type="button" aria-label="Back to top" hidden>
+  ↑ Top
+</button>
 
 <script>
 (() => {
-  const cards = [...document.querySelectorAll("#portfolio .p-card")];
+  const root = document.getElementById("portfolio");
+  if (!root) return;
+
+  const cards = [...root.querySelectorAll(".p-card")];
   const el = id => document.getElementById(id);
 
   // Search and filters.
@@ -70,154 +244,84 @@
     const topic = el("p-topic").value;
     const year = el("p-year").value;
     let visible = 0;
+
     cards.forEach(card => {
       const show =
         (!query || card.textContent.toLowerCase().includes(query)) &&
         (!topic || card.dataset.topic === topic) &&
         (!year || card.dataset.year === year);
+
       card.hidden = !show;
       if (show) visible++;
     });
-    el("p-count").textContent = `${visible} / ${cards.length} papers`;
+
+    el("p-count").textContent =
+      `${visible} / ${cards.length} papers`;
   };
+
   el("p-filters").hidden = false;
+
   ["p-search", "p-topic", "p-year"].forEach(id => {
     el(id).addEventListener("input", filter);
     el(id).addEventListener("change", filter);
   });
+
   filter();
 
-  // Figure lightbox. Escape closes the native dialog.
+  // Figure lightbox.
   const dialog = el("p-lightbox");
-  document.querySelectorAll("#portfolio .p-zoom").forEach(button => {
+
+  root.querySelectorAll(".p-zoom").forEach(button => {
     button.addEventListener("click", () => {
       const image = button.querySelector("img");
+
       if (typeof dialog.showModal !== "function") {
         window.open(image.src, "_blank", "noopener");
         return;
       }
+
       el("p-full").src = image.src;
       el("p-full").alt = image.alt;
       el("p-caption").textContent = image.alt;
       dialog.showModal();
     });
   });
-  el("p-close").addEventListener("click", () => dialog.close());
+
+  el("p-close").addEventListener("click", () => {
+    dialog.close();
+  });
+
   dialog.addEventListener("click", event => {
     if (event.target === dialog) dialog.close();
   });
 
-  // Algebraic illustration, not experimental measurements.
-  const updateDemo = () => {
-    const a = Number(el("p-a").value);
-    const b = Number(el("p-b").value);
-    const r = Number(el("p-r").value);
-    const scores = {
-      "p-s11": r + a + b,
-      "p-s12": a - b,
-      "p-s21": -a + b,
-      "p-s22": r - a - b
-    };
-    Object.entries(scores).forEach(([id, value]) => {
-      el(id).textContent = `(${value.toFixed(1)})`;
-    });
-    el("p-delta").textContent = (2 * r).toFixed(1);
-  };
-  ["p-a", "p-b", "p-r"].forEach(id => {
-    el(id).addEventListener("input", updateDemo);
-  });
-  updateDemo();
-
   // Reading progress and back-to-top.
   const updateScroll = () => {
-    const height = document.documentElement.scrollHeight - window.innerHeight;
-    const percent = height > 0 ? Math.min(100, window.scrollY / height * 100) : 0;
+    const height =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    const percent = height > 0
+      ? Math.min(100, window.scrollY / height * 100)
+      : 0;
+
     el("p-progress").style.width = percent + "%";
     el("p-top").hidden = window.scrollY < 500;
   };
+
   window.addEventListener("scroll", updateScroll, {passive:true});
   window.addEventListener("resize", updateScroll);
   window.addEventListener("load", updateScroll);
+
   el("p-top").addEventListener("click", () => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({top:0, behavior:reduced ? "auto" : "smooth"});
+    const reduced =
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    window.scrollTo({
+      top:0,
+      behavior:reduced ? "auto" : "smooth"
+    });
   });
+
   updateScroll();
-
-  // Citation data: exact normalized-title matching, not fuzzy guessing.
-  const normalize = title =>
-    String(title || "").normalize("NFKD").toLowerCase().replace(/[^a-z0-9]/g, "");
-
-  const setNumber = (id, value) => {
-    el(id).textContent = Number.isFinite(value) ? value.toLocaleString() : "—";
-  };
-
-  const loadCitations = async () => {
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), 15000);
-    try {
-      const url = "https://raw.githubusercontent.com/{{ site.repository }}/citation-data/citation-data.json";
-      const response = await fetch(url, {
-        cache:"no-store",
-        signal:controller.signal
-      });
-      if (!response.ok) throw new Error("Citation cache unavailable");
-      const data = await response.json();
-      if (data.scholar_id !== "Ch18_eIAAAAJ") throw new Error("Unexpected Scholar profile");
-
-      setNumber("p-total", data.total_citations);
-      setNumber("p-hindex", data.h_index);
-      setNumber("p-i10", data.i10_index);
-
-      const index = new Map();
-      (data.publications || []).forEach(publication => {
-        if (!Number.isFinite(publication.citations)) return;
-        const key = normalize(publication.title);
-        if (!key) return;
-        if (!index.has(key)) index.set(key, []);
-        index.get(key).push(publication);
-      });
-
-      let matched = 0;
-      let firstMatched = 0;
-      let firstSum = 0;
-      const used = new Set();
-      const firstExpected = cards.filter(card => card.dataset.role === "first").length;
-
-      cards.forEach(card => {
-        const key = normalize(card.dataset.scholarTitle || card.dataset.title);
-        const candidates = index.get(key) || [];
-        if (candidates.length !== 1) return;
-        const paper = candidates[0];
-        if (used.has(paper.id)) return;
-        used.add(paper.id);
-        matched++;
-        card.querySelector(".p-cite").textContent =
-          "Citations: " + paper.citations.toLocaleString();
-        if (card.dataset.role === "first") {
-          firstMatched++;
-          firstSum += paper.citations;
-        }
-      });
-
-      el("p-first-cites").textContent = firstMatched
-        ? (firstMatched === firstExpected ? "" : "≥") + firstSum.toLocaleString()
-        : "—";
-
-      const updated = new Date(data.updated_at);
-      const stale = Date.now() - updated.getTime() > 3 * 86400000;
-      el("p-citation-note").textContent =
-        `Scholar cache updated: ${updated.toLocaleString()}. ` +
-        `Matched papers: ${matched}/${cards.length}; first-author papers: ${firstMatched}/${firstExpected}. ` +
-        `“—” means unmatched or unavailable; “≥” indicates a partial first-author citation sum.` +
-        (stale ? " The cache is older than 3 days." : "");
-    } catch (error) {
-      el("p-citation-note").textContent =
-        "Citation data is currently unavailable. Please open Google Scholar for the latest values. Missing values are not treated as zero.";
-    } finally {
-      clearTimeout(timer);
-    }
-  };
-  loadCitations();
 })();
 </script>
