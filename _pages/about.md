@@ -46,15 +46,6 @@ author_profile: true
     out-of-distribution detection, and pedestrian attribute recognition.
   </p>
 
-  <p class="p-links">
-    <a href="mailto:ybzhou@buaa.edu.cn">Email</a>
-    <a href="https://scholar.google.com/citations?user=Ch18_eIAAAAJ"
-       target="_blank" rel="noopener noreferrer">Google Scholar</a>
-    <a href="https://orcid.org/0000-0001-7964-7517"
-       target="_blank" rel="noopener noreferrer">ORCID</a>
-    <a href="https://github.com/SDret"
-       target="_blank" rel="noopener noreferrer">GitHub</a>
-  </p>
 </section>
 
 <section id="news">
