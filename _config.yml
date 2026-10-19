@@ -1,10 +1,10 @@
 # Site Settings
 title: "Yibo Zhou (周亦博)"
 description: "Computer Vision & Trustworthy Machine Learning"
-repository: "SDret/homepage-new"
+repository: "SDret/sdret.github.io"
 
 url: "https://sdret.github.io"
-baseurl: "/homepage-new"
+baseurl: ""
 
 google_scholar_stats_use_cdn: true
 
