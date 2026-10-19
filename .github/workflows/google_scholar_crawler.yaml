@@ -15,7 +15,7 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 8
 
     steps:
       - name: Check out repository
@@ -32,25 +32,37 @@ jobs:
           python -c "from bibtexparser.bibdatabase import BibDatabase; print('BibTeX dependency OK')"
 
       - name: Read public Scholar profile
+        timeout-minutes: 3
         env:
           GOOGLE_SCHOLAR_ID: "Ch18_eIAAAAJ"
         run: |
-          python - <<'PY'
+          python -u - <<'PY'
           import json
           import os
           from datetime import datetime, timezone
+
+          print("[1/4] Importing scholarly...", flush=True)
           from scholarly import scholarly
 
+          scholarly.set_timeout(20)
+          scholarly.set_retries(1)
+
           scholar_id = os.environ["GOOGLE_SCHOLAR_ID"]
+
+          print("[2/4] Requesting public Scholar profile...", flush=True)
           author = scholarly.search_author_id(scholar_id)
+
+          print("[3/4] Reading citation indices and publications...", flush=True)
           author = scholarly.fill(
               author,
               sections=["indices", "publications"]
           )
 
+          print("[4/4] Validating and writing citation cache...", flush=True)
+
           if "citedby" not in author or not author.get("publications"):
               raise RuntimeError(
-                  "Incomplete Scholar response; keep the previous cache."
+                  "Incomplete Scholar response. Previous cache will not be overwritten."
               )
 
           publications = []
@@ -70,7 +82,7 @@ jobs:
 
           if not publications:
               raise RuntimeError(
-                  "No valid publications; keep the previous cache."
+                  "No valid publications. Previous cache will not be overwritten."
               )
 
           def optional_int(value):
@@ -88,8 +100,8 @@ jobs:
           with open("/tmp/citation-data.json", "w", encoding="utf-8") as file:
               json.dump(result, file, ensure_ascii=False, indent=2)
 
-          print("Fetched", len(publications), "publications.")
-          print("Total citations:", result["total_citations"])
+          print("SUCCESS: fetched", len(publications), "publications.", flush=True)
+          print("Total citations:", result["total_citations"], flush=True)
           PY
 
       - name: Save successful data to citation-data branch
