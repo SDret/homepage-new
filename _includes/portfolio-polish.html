@@ -1,0 +1,319 @@
+<style>
+/* Overall visual system */
+#portfolio{
+  --p-red:#9e1b32;
+  --p-tint:#fbf3f4;
+  --p-line:#eadfe2;
+  --p-ink:#28242a;
+  --p-muted:#6c626a;
+  color:var(--p-ink);
+  line-height:1.75;
+}
+
+#portfolio section{
+  margin-bottom:3rem;
+  scroll-margin-top:90px;
+}
+
+#portfolio section > h1{
+  position:relative;
+  margin:0 0 1.3rem;
+  padding-bottom:12px;
+  border-bottom:1px solid var(--p-line);
+  font-size:1.6em;
+  letter-spacing:-.025em;
+}
+
+#portfolio section > h1::after{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  width:46px;
+  height:3px;
+  border-radius:3px;
+  background:var(--p-red);
+}
+
+#portfolio .p-muted{color:var(--p-muted)}
+
+#portfolio a:focus-visible,
+#portfolio button:focus-visible,
+#portfolio summary:focus-visible{
+  outline:2px solid var(--p-red);
+  outline-offset:4px;
+}
+
+/* Introduction */
+#portfolio #about-me{
+  padding:25px;
+  border:1px solid var(--p-line);
+  border-radius:16px;
+  background:linear-gradient(135deg,#fff 45%,#fcf5f7);
+  box-shadow:0 6px 24px rgba(70,25,40,.035);
+}
+
+#portfolio .p-tagline{
+  margin:0 0 18px;
+  padding:10px 14px;
+  font-size:1.05em;
+}
+
+#portfolio .p-academic-link{
+  font-weight:600;
+  text-decoration:none;
+  border-bottom:1px dotted #bd8793;
+}
+
+#portfolio .p-academic-link:hover{
+  border-bottom-style:solid;
+}
+
+/* News: award cards */
+#portfolio .n-awards{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:15px;
+  margin-bottom:24px;
+}
+
+#portfolio .n-award{
+  position:relative;
+  overflow:hidden;
+  padding:20px;
+  border:1px solid #ead9df;
+  border-radius:14px;
+  background:linear-gradient(135deg,#fff,#fbf0f3);
+  box-shadow:0 5px 18px rgba(100,30,50,.04);
+}
+
+#portfolio .n-award::after{
+  content:"";
+  position:absolute;
+  right:-25px;
+  bottom:-35px;
+  width:120px;
+  height:120px;
+  border:18px solid rgba(158,27,50,.035);
+  border-radius:50%;
+  pointer-events:none;
+}
+
+#portfolio .n-award-top{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+}
+
+#portfolio .n-star{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:#f2e3d0;
+  color:#84612b;
+  font-size:19px;
+}
+
+#portfolio .n-date{
+  color:var(--p-muted);
+  font-size:.8em;
+  font-variant-numeric:tabular-nums;
+}
+
+#portfolio .n-award h3{
+  position:relative;
+  margin:14px 0 6px;
+  color:var(--p-red);
+  font-size:1.05em;
+  line-height:1.45;
+}
+
+#portfolio .n-award p{
+  position:relative;
+  margin:0;
+  color:var(--p-muted);
+  font-size:.85em;
+}
+
+/* News: publication timeline */
+#portfolio .n-timeline{
+  margin:0 0 0 7px;
+  padding:0 0 0 20px;
+  border-left:2px solid var(--p-line);
+  list-style:none;
+}
+
+#portfolio .n-timeline li{
+  position:relative;
+  display:grid;
+  grid-template-columns:82px minmax(0,1fr);
+  gap:14px;
+  margin:0;
+  padding:12px 0;
+}
+
+#portfolio .n-timeline li::before{
+  content:"";
+  position:absolute;
+  left:-26px;
+  top:19px;
+  width:10px;
+  height:10px;
+  border:2px solid white;
+  border-radius:50%;
+  background:var(--p-red);
+}
+
+#portfolio .n-timeline p{
+  margin:6px 0;
+  font-size:.87em;
+}
+
+#portfolio .n-tag{
+  display:inline-block;
+  padding:2px 8px;
+  border-radius:5px;
+  background:var(--p-tint);
+  color:var(--p-red);
+  font-size:.74em;
+  font-weight:700;
+}
+
+#portfolio .n-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  font-size:.8em;
+}
+
+#portfolio .n-history{
+  margin-top:14px;
+  padding:12px 15px;
+  border:1px solid var(--p-line);
+  border-radius:10px;
+  background:#fff;
+}
+
+#portfolio .n-history summary{
+  font-size:.9em;
+  font-weight:600;
+}
+
+#portfolio .n-history .n-timeline{margin-top:14px}
+
+/* Publication cards */
+#portfolio .p-card{
+  margin:16px 0;
+  padding:22px;
+  border:1px solid var(--p-line);
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 4px 18px rgba(65,25,40,.025);
+  transition:border-color .18s ease,box-shadow .18s ease;
+}
+
+#portfolio .p-card:hover{
+  border-color:#d8b7c0;
+  box-shadow:0 8px 26px rgba(80,25,45,.065);
+}
+
+#portfolio .p-card .paper-box-image img{
+  aspect-ratio:16/10;
+  object-fit:contain;
+  background:#fff;
+  padding:6px;
+  box-sizing:border-box;
+}
+
+#portfolio .p-card h3{
+  line-height:1.5;
+  letter-spacing:-.012em;
+}
+
+#portfolio .p-links a{
+  padding:5px 11px;
+  border-radius:7px;
+  background:#fff;
+  transition:background .15s ease,color .15s ease;
+}
+
+#portfolio .p-links a:hover{
+  background:var(--p-red);
+  border-color:var(--p-red);
+  color:#fff;
+  text-decoration:none;
+}
+
+#portfolio .p-takeaway{
+  padding-left:11px;
+  border-left:2px solid #e8cdd5;
+}
+
+#portfolio .p-filters{
+  padding:13px;
+  border:1px solid var(--p-line);
+  border-radius:12px;
+  background:#fcfafb;
+}
+
+/* Education */
+#portfolio .p-education{
+  display:grid;
+  gap:12px;
+}
+
+#portfolio .p-education > div{
+  padding:15px 18px;
+  border:1px solid var(--p-line);
+  border-left:3px solid #b46b7b;
+  border-radius:9px;
+}
+
+#portfolio .p-education p{
+  margin:4px 0 0;
+  font-size:.9em;
+}
+
+/* Bottom publication list */
+#portfolio #publication-list{
+  padding:22px;
+  border:1px solid var(--p-line);
+  border-radius:14px;
+  background:#fcfafb;
+}
+
+#portfolio #arxivfeed,
+#portfolio #arxivfeed .arxivfeed{
+  width:auto!important;
+  max-width:100%!important;
+  overflow-wrap:anywhere;
+}
+
+#portfolio #arxivfeed{
+  font-size:.88em;
+  line-height:1.7;
+}
+
+#portfolio #arxivfeed dt{margin-top:18px}
+#portfolio #arxivfeed dd{margin-left:18px}
+#portfolio #arxivfeed a{overflow-wrap:anywhere}
+
+@media(max-width:700px){
+  #portfolio #about-me,
+  #portfolio #publication-list{padding:18px}
+  #portfolio .n-awards{grid-template-columns:1fr}
+  #portfolio .p-card{padding:17px}
+  #portfolio .n-timeline li{
+    grid-template-columns:70px minmax(0,1fr);
+    gap:10px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  #portfolio .p-card,
+  #portfolio .p-links a{transition:none}
+}
+</style>
