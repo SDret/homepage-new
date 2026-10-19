@@ -1,29 +1,101 @@
-name: Get Citation Data
+name: Update Scholar Citations
 
-on: 
- page_build: 
- schedule:
-  - cron:  '0 8 * * *'
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 3 * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scholar-citations
+  cancel-in-progress: false
 
 jobs:
-  build:
+  update:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
+
     steps:
-    - uses: actions/checkout@v2
-    - name: Install Reqs
-      run: |
-        sudo apt-get install python3-setuptools
-    - name: Run
-      run: |
-        cd ./google_scholar_crawler
-        pip3 install -r requirements.txt
-        python3 main.py
-        cd ./results
-        git init
-        git config --local user.name "${GITHUB_ACTOR}"
-        export remote_repo="https://${GITHUB_ACTOR}:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git"
-        git add *.json
-        git commit -m "Updated Citation Data"
-        git push "${remote_repo}" HEAD:google-scholar-stats --force
-      env: 
-        GOOGLE_SCHOLAR_ID: ${{ secrets.GOOGLE_SCHOLAR_ID }}
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Scholar reader
+        run: python -m pip install "scholarly==1.7.11"
+
+      - name: Read public Scholar profile
+        env:
+          GOOGLE_SCHOLAR_ID: "Ch18_eIAAAAJ"
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from datetime import datetime, timezone
+          from scholarly import scholarly
+
+          scholar_id = os.environ["GOOGLE_SCHOLAR_ID"]
+          author = scholarly.search_author_id(scholar_id)
+          author = scholarly.fill(author, sections=["indices", "publications"])
+
+          if "citedby" not in author or not author.get("publications"):
+              raise RuntimeError("Incomplete Scholar response; keep the previous cache.")
+
+          publications = []
+          for paper in author["publications"]:
+              title = paper.get("bib", {}).get("title")
+              citations = paper.get("num_citations")
+              if not title or citations is None:
+                  continue
+              publications.append({
+                  "id": paper.get("author_pub_id") or title,
+                  "title": title,
+                  "citations": int(citations)
+              })
+
+          if not publications:
+              raise RuntimeError("No valid publications; keep the previous cache.")
+
+          def optional_int(value):
+              return int(value) if value is not None else None
+
+          result = {
+              "scholar_id": scholar_id,
+              "updated_at": datetime.now(timezone.utc).isoformat(),
+              "total_citations": int(author["citedby"]),
+              "h_index": optional_int(author.get("hindex")),
+              "i10_index": optional_int(author.get("i10index")),
+              "publications": publications
+          }
+
+          with open("/tmp/citation-data.json", "w", encoding="utf-8") as file:
+              json.dump(result, file, ensure_ascii=False, indent=2)
+
+          print("Fetched", len(publications), "publications.")
+          print("Total citations:", result["total_citations"])
+          PY
+
+      - name: Save successful data to citation-data branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          if git fetch --depth=1 origin citation-data:refs/remotes/origin/citation-data; then
+            git checkout -B citation-data origin/citation-data
+          else
+            git checkout --orphan citation-data
+            git rm -rf .
+          fi
+
+          cp /tmp/citation-data.json citation-data.json
+          git add citation-data.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Update Google Scholar citation cache"
+          git push origin HEAD:citation-data
