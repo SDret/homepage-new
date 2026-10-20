@@ -21,3 +21,87 @@
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=TeX-MML-AM_CHTML' async></script>
 
 <!-- end custom head snippets -->
+
+<!-- ===== 深色模式（默认深色，可切换浅色）===== -->
+<script>
+(function () {
+  var root = document.documentElement;
+  var saved = null;
+  try { saved = localStorage.getItem('theme'); } catch (e) {}
+  root.setAttribute('data-theme', saved || 'dark');
+
+  window.addEventListener('DOMContentLoaded', function () {
+    if (document.getElementById('theme-toggle')) return;
+    var btn = document.createElement('button');
+    btn.id = 'theme-toggle';
+    btn.type = 'button';
+    btn.setAttribute('aria-label', '切换深色 / 浅色模式');
+    btn.setAttribute('title', '切换深色 / 浅色模式');
+    function render() {
+      btn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+    }
+    btn.addEventListener('click', function () {
+      var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+      render();
+    });
+    render();
+    document.body.appendChild(btn);
+  });
+})();
+</script>
+<style>
+/* ===== 深色模式配色 ===== */
+html[data-theme="dark"] body{background:#131518;color:#e6e4e7}
+html[data-theme="dark"] .masthead{background:#1b1e24;border-bottom:1px solid #2c313a}
+html[data-theme="dark"] .greedy-nav{background:#1b1e24}
+html[data-theme="dark"] .greedy-nav a{color:#c9cdd4}
+html[data-theme="dark"] .greedy-nav button{background-color:#343a44}
+html[data-theme="dark"] .greedy-nav .navicon,
+html[data-theme="dark"] .greedy-nav .navicon:before,
+html[data-theme="dark"] .greedy-nav .navicon:after{background:#c9cdd4}
+html[data-theme="dark"] .greedy-nav .hidden-links{background:#1b1e24;border:1px solid #2c313a;box-shadow:0 0 10px rgba(0,0,0,.5)}
+html[data-theme="dark"] .author__urls{background:#1b1e24;border-color:#2c313a}
+html[data-theme="dark"] .author__urls:before{border-color:#2c313a transparent}
+html[data-theme="dark"] .author__urls:after{border-color:#1b1e24 transparent}
+html[data-theme="dark"] .author__avatar img{border-color:#2c313a}
+html[data-theme="dark"] .page__content h1{border-bottom-color:#2c313a}
+html[data-theme="dark"] .page__content a,
+html[data-theme="dark"] .sidebar a{color:#8db4f7}
+html[data-theme="dark"] .page__footer{background:#17191d;border-top:1px solid #2c313a;color:#9b95a0}
+html[data-theme="dark"] .page__footer .fas,
+html[data-theme="dark"] .page__footer .fab,
+html[data-theme="dark"] .page__footer .far,
+html[data-theme="dark"] .page__footer .fal{color:#9b95a0}
+
+/* portfolio 区域（你的自定义卡片） */
+html[data-theme="dark"] #portfolio{--p-red:#d95f73;--p-tint:#35222a;--p-line:#33303a;--p-ink:#e6e4e7;--p-muted:#a49ca8}
+html[data-theme="dark"] #portfolio #about-me{background:linear-gradient(135deg,#1b1e24 45%,#231e23);border-color:#33303a;box-shadow:0 6px 24px rgba(0,0,0,.35)}
+html[data-theme="dark"] #portfolio .n-award{background:linear-gradient(135deg,#1b1e24,#241e23);border-color:#3a2e34;box-shadow:0 5px 18px rgba(0,0,0,.3)}
+html[data-theme="dark"] #portfolio .n-award::after{border-color:rgba(217,95,115,.07)}
+html[data-theme="dark"] #portfolio .n-star{background:#3a2f24;color:#d9b98a}
+html[data-theme="dark"] #portfolio .n-timeline li::before{border-color:#131518}
+html[data-theme="dark"] #portfolio .n-history{background:#1b1e24}
+html[data-theme="dark"] #portfolio .p-card{background:#1b1e24;box-shadow:0 4px 18px rgba(0,0,0,.3)}
+html[data-theme="dark"] #portfolio .p-card:hover{border-color:#5a4048;box-shadow:0 8px 26px rgba(0,0,0,.45)}
+html[data-theme="dark"] #portfolio .p-links a{background:#22252c}
+html[data-theme="dark"] #portfolio .p-takeaway{border-left-color:#4a3a40;color:#c9c3c9}
+html[data-theme="dark"] #portfolio .p-filters{background:#17191d}
+html[data-theme="dark"] #portfolio .p-filters input,
+html[data-theme="dark"] #portfolio .p-filters select{background:#22252c;color:#e6e4e7;border-color:#33303a}
+html[data-theme="dark"] #portfolio .p-education > div{background:#1b1e24;border-left-color:#a45a68}
+html[data-theme="dark"] #portfolio #publication-list{background:#17191d}
+html[data-theme="dark"] #portfolio details[open]{background:#22252c}
+html[data-theme="dark"] #portfolio .p-card .paper-box-image img{border-color:#3a3f4a}
+html[data-theme="dark"] #p-lightbox{background:#1b1e24;color:#e6e4e7}
+
+/* 右下角切换按钮 */
+#theme-toggle{position:fixed;right:20px;bottom:22px;z-index:1001;width:46px;height:46px;border-radius:50%;border:1px solid #d8cfd4;background:#fff;color:#28242a;font-size:20px;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.15);display:flex;align-items:center;justify-content:center;line-height:1;padding:0}
+html[data-theme="dark"] #theme-toggle{background:#22252c;color:#f5d76e;border-color:#3a3f4a;box-shadow:0 3px 12px rgba(0,0,0,.5)}
+#p-top{bottom:80px !important}
+
+/* 切换时平滑过渡 */
+body,.masthead,.page__footer,#portfolio .p-card,#portfolio .n-award,#portfolio #about-me,#portfolio .p-filters{transition:background-color .25s ease,color .25s ease,border-color .25s ease}
+</style>
+<!-- ===== 深色模式代码结束 ===== -->
