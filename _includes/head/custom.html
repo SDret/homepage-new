@@ -105,3 +105,23 @@ html[data-theme="dark"] #theme-toggle{background:#22252c;color:#f5d76e;border-co
 body,.masthead,.page__footer,#portfolio .p-card,#portfolio .n-award,#portfolio #about-me,#portfolio .p-filters{transition:background-color .25s ease,color .25s ease,border-color .25s ease}
 </style>
 <!-- ===== 深色模式代码结束 ===== -->
+
+<!-- ===== 修复顶部间距 ===== -->
+<style>
+/* 取消模板遗留的负 margin，让 About Me 卡片回到正常位置 */
+.page__content #about-me{
+  margin-top:0 !important;
+}
+.page__content #about-me:before{
+  display:none !important;
+}
+/* 导航栏与正文之间的留白：桌面 48px，手机 32px */
+#main{
+  margin-top:3em;
+}
+@media (max-width:1023px){
+  #main{
+    margin-top:2em;
+  }
+}
+</style>
