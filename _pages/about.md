@@ -251,7 +251,7 @@ author_profile: true
     <strong>OPPO Guangdong Mobile Telecommunications Corp., Ltd.</strong><br>
     Artificial Intelligence Algorithm Engineer<br>
     101 Laboratory · Imaging Algorithm Development Department<br>
-    July 2019 – March 2021 · Shenzhen, China
+    July 2019 – June 2021 · Shenzhen, China
   </p>
 </section>
 
