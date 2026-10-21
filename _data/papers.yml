@@ -19,7 +19,7 @@
   role: "corresponding"
   topic: "theory"
   image: "fig03-calibration.png"
-  url: "https://openreview.net/forum?id=Q5Hpa44zeJ"
+  url: "https://arxiv.org/abs/2610.25663"
   takeaway: "Valid calibration metadata can restore first-order signal across sources."
   summary: "Source labels do not reveal how different sources orient their coordinates. In a sparse Gaussian model, relative-gauge metadata enables synchronization and changes the learning problem from sparse PCA to sparse mean recovery. Aligned mass quantifies the statistical value of calibration, with computational consequences under sparse-PCA hardness assumptions."
 
@@ -32,6 +32,7 @@
   topic: "theory"
   image: "fig02-label-only.png"
   url: "https://openreview.net/forum?id=5rXQteakrg"
+  code: "https://github.com/Candice-x1/What-Can-Labels-Alone-Audit-and-Edit-in-Frozen-Representations-"
   takeaway: "Preserve the label-sufficient quotient before attempting residual edits."
   summary: "Labels identify a posterior quotient, rather than an arbitrary semantic/background decomposition. This motivates quotient-first auditing and editing of frozen representations. A structured second-order specialization yields dual-moment decomposition; residual editing is useful only in regimes with sufficient residual signal, support, and split stability."
 
